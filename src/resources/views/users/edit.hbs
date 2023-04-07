@@ -1,0 +1,77 @@
+<div class="mt-4 main-content" >
+  <h2>Cập nhật thông tin người dùng</h2>
+  <div class="container">
+    <form method="post" action="/users/{{user._id}}?_method=PUT" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="course-name">Tên người dùng</label>
+        <input
+          type="text"
+          class="form-control"
+          id="course-name"
+          name="name"
+          placeholder="Nhập tên người dùng"
+          value="{{ user.name }}"
+        />
+      </div>
+       <div class="form-group">
+        <label for="birthday">Ngày sinh</label>
+        <input
+          type="date"
+          class="form-control"
+          id="birthday"
+          name="birthday"
+          value="{{formatDate user.birthday }}"
+
+        />
+      </div>
+       <div class="form-group">
+        <label for="gender">Giới tính</label>
+        <select class="form-control"  name="gender" id="gender">
+          <option {{handleGender user.gender "Nam" }}  value="Nam">Nam</option>
+          <option {{handleGender user.gender "Nữ" }} value="Nữ">Nữ</option>
+        </select>
+      </div>
+       <div class="form-group">
+        <label for="address">Địa chỉ</label>
+        <input
+          type="text"
+          class="form-control"
+          id="address"
+          name="address"
+          placeholder="Nhập địa chỉ nơi ở"
+          value="{{ user.address }}"
+        />
+      </div>
+       <div class="form-group">
+        <label for="phone_number">Nhập số điện thoại</label>
+        <input
+          type="text"
+          class="form-control"
+          id="phone_number"
+          name="phone_number"
+          placeholder="Nhập số điện thoại"
+          value="{{ user.phone_number }}"
+        />
+      </div>
+     
+     <div class="form-group">
+        <label for="file_image">Thay đổi hình ảnh</label>
+        
+        <input class="form-control" accept="image/*"  type="file"  name="image" id="file_image" />
+        <img class="m-2" id="showImg" src="/uploads/{{ user.image }}" width="100" alt="">
+        
+      </div>
+
+
+      <button type="submit" class="btn btn-primary">Cập nhật</button>
+    </form>
+  </div>
+</div>
+<script >
+          const fileChange = document.getElementById("file_image")
+          const showImg = document.getElementById("showImg")
+          fileChange.onchange = function changeImage(e){
+            const file = e.target.files[0]
+            showImg.src = URL.createObjectURL(file);
+          }
+</script>

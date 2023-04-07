@@ -1,0 +1,69 @@
+<div class="mt-4 main-content" >
+  <h2>Thêm mới người dùng</h2>
+  <div class="container">
+    <form method="post" action="store" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="course-name">Tên người dùng</label>
+        <input
+          type="text"
+          class="form-control"
+          id="course-name"
+          name="name"
+          placeholder="Nhập tên người dùng"
+        />
+      </div>
+       <div class="form-group">
+        <label for="birthday">Ngày sinh</label>
+        <input
+          type="date"
+          class="form-control"
+          id="birthday"
+          name="birthday"
+        />
+      </div>
+       <div class="form-group">
+        <label for="gender">Giới tính</label>
+        <select class="form-control" name="gender" id="gender">
+          <option value="Nam">Nam</option>
+          <option value="Nữ">Nữ</option>
+        </select>
+      </div>
+       <div class="form-group">
+        <label for="address">Địa chỉ</label>
+        <input
+          type="text"
+          class="form-control"
+          id="address"
+          name="address"
+          placeholder="Nhập địa chỉ nơi ở"
+        />
+      </div>
+       <div class="form-group">
+        <label for="phone_number">Nhập số điện thoại</label>
+        <input
+          type="text"
+          class="form-control"
+          id="phone_number"
+          name="phone_number"
+          placeholder="Nhập số điện thoại"
+        />
+      </div>
+     
+      <div class="form-group">
+        <label for="file_image">Hình ảnh người dùng</label>
+         <input class="form-control" accept="image/*"  type="file"  name="image" id="file_image" />
+        <img class="m-2 d-none" id="showImg"  src="/uploads/{{ user.image }}" width="100" alt="">
+      </div>
+      <button type="submit" class="btn btn-primary">Thêm người dùng</button>
+    </form>
+  </div>
+</div>
+<script >
+          const fileChange = document.getElementById("file_image")
+          const showImg = document.getElementById("showImg")
+          fileChange.onchange = function changeImage(e){
+            const file = e.target.files[0]
+            showImg.src = URL.createObjectURL(file);
+            showImg.classList.remove('d-none')
+          }
+</script>

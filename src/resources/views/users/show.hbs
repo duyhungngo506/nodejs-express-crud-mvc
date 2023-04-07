@@ -1,0 +1,18 @@
+<div class='mt-4 ' >
+    <div class='row'>
+        <div class='col-lg-9'>
+           <img src="/uploads/{{ user.image }}" alt="">
+            <h2>Tên: {{user.name}}</h2>
+
+            <h3>
+                Địa chỉ: {{user.address}}
+            </h3>
+             <h4>
+                Ngày sinh: {{formatDate user.birthday}}
+            </h4>
+             <h4>
+               Số điện thoại:  {{user.phone_number}}
+            </h4>
+        </div>
+    </div>
+</div>
